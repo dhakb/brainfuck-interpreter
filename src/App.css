@@ -1,0 +1,40 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border: 20px solid #1e1e1e;
+    border-radius: 10px;
+}
+
+
+.output-container {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: flex-end;*/
+    gap: 4px;
+    width: 30%;
+    /*border: 1px solid black;*/
+}
+
+.output{
+    height: 50vh;
+    background-color: #3c3c3c;
+    color: antiquewhite;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.clear-button {
+    /*position: relative;*/
+    /*right: 422px;*/
+    /*top: 40px*/
+}
+

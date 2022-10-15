@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+import {interpreter} from "./interpreter"
+import Button from '@mui/material/Button';
+import Editor from "@monaco-editor/react";
+
+import "./App.css"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [inputValue, setInputValue] = useState("")
+    const [output, setOutPut] = useState("")
+
+
+    const execute = () => {
+        setOutPut(interpreter(inputValue))
+    }
+
+
+    const clearOutput = () => {
+        setOutPut("")
+    }
+
+    return (
+        <div className="container">
+            <div className="editor-container">
+                <Editor
+                    theme={"vs-dark"}
+                    defaultValue="// type your BF program"
+                    onChange={(e) => setInputValue(e)}
+                    value={inputValue}
+                    className="editor"
+                />
+                <Button onClick={execute} variant="contained" color="success"  sx={{borderRadius: 0}}>Run</Button>
+            </div>
+
+            <div className="output-container">
+                <div className="output" >{output}</div>
+                <div className="clear-button">
+                    <Button onClick={clearOutput} color="error" variant="contained">clear</Button>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
